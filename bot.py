@@ -33,7 +33,7 @@ def main():
     env = gym.make('flashgames.CoasterRacer-v0')
     #initiate environment (gym)/universe
     # sets up the environmest in vnc docker
-
+    env.configure(remotes=1)
     observation_n = env.reset()
 
     #initialize variables
@@ -52,7 +52,7 @@ def main():
 
     left = [('KeyEvent', 'ArrowUp', True), ('KeyEvent', 'ArrowLeft', True), ('KeyEvent', 'ArrowRight', False)]
     right = [('KeyEvent', 'ArrowUp', True), ('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', True)]
-    forward = [('KeyEvent', 'ArrowUp', True), ('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', False)]
+    Forward = [('KeyEvent', 'ArrowUp', True), ('KeyEvent', 'ArrowLeft', False), ('KeyEvent', 'ArrowRight', False)]
 
 
     #logic
@@ -71,7 +71,7 @@ def main():
                     action_n = [event for ob in observation_n]
                     turn = False
         elif(~turn):
-            action_n = [forward for  ob in observation_n]
+            action_n = [Forward for  ob in observation_n]
             #if no turn is needed , go straight
 
         if(observation_n[0] != None):
